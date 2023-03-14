@@ -17,7 +17,7 @@ public class PlaylistManager {
     }
 
     public PlaylistManager() {
-        this.playlist = null; // Nullary constructor doing nullary shit
+        this.playlist = new Playlist(); // Nullary constructor doing nullary shit
     }
 
     public Playlist getPlaylist() {

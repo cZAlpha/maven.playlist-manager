@@ -29,6 +29,10 @@ public class Playlist {
         }
     }
 
+    public Playlist() {
+        this.songNameArray = new String[0];
+    }
+
     public void addSong(String song){ // CUSTOM METHOD : ADDS SONGS TO THE ARRAY THAT HOLDS ALL OF THE SONGS
         if ( song != null ) {
             String[] newArray = Arrays.copyOf(songNameArray, songNameArray.length + 1);
