@@ -2,6 +2,7 @@ package com.github.curriculeon;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by leon on 1/10/2021.
@@ -20,6 +21,10 @@ public class Playlist {
     public Playlist(int currentIndex, String[] songNameArray) { // Custom Constructor
         this.songNameArray = songNameArray;
         this.currentIndex = currentIndex;
+    }
+
+    public Playlist(List<String> playlist) {
+        this.songNameArray = playlist.toArray(new String[0]);
     }
 
     public String[] getSongNameArray() { // Returns the array full of song names
