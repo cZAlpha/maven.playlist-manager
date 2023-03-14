@@ -43,7 +43,9 @@ public class PlaylistManager {
     }
 
     public void removeSong(String songToRemove) {
-
+        if ( this.playlist != null ){
+            playlist.removeSong(songToRemove);
+        }
     }
 
     public void printAll() {

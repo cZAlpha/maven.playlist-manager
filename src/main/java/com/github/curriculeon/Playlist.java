@@ -44,7 +44,31 @@ public class Playlist {
     }
 
     public void removeSong(String song){ // CUSTOM METHOD : REMOVES SONGS TO THE ARRAY THAT HOLDS ALL OF THE SONGS
+        // Create a new array to hold the result
+        String[] result = new String[songNameArray.length - 1];
 
+        // Search for the element to remove
+        int indexToRemove = -1;
+        for (int i = 0; i < songNameArray.length; i++) {
+            if (songNameArray[i].equals(song)) {
+                indexToRemove = i;
+                break;
+            }
+        }
+
+        // If the element is not found, return without modifying the array
+        if (indexToRemove == -1) {
+            return;
+        }
+
+        // Copy the elements before the element to remove
+        System.arraycopy(songNameArray, 0, result, 0, indexToRemove);
+
+        // Copy the elements after the element to remove
+        System.arraycopy(songNameArray, indexToRemove + 1, result, indexToRemove, songNameArray.length - indexToRemove - 1);
+
+        // Update the array with the new result
+        songNameArray = result;
     }
 
     public String[] getSongNameArray() { // Returns the array full of song names

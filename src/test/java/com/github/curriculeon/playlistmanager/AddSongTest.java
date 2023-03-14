@@ -38,8 +38,8 @@ public class AddSongTest {
     @Test
     public void testAddDuplicateSong() {
         // Given
-        PlaylistManager manager = new PlaylistManager();
         String[] songs = {"song1","song2","song3"};
+        PlaylistManager manager = new PlaylistManager(songs);
         String songToAdd = "song2";
         // When
         manager.addSong(songToAdd);
