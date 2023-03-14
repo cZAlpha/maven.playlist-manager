@@ -24,11 +24,31 @@ public class Playlist {
     }
 
     public Playlist(List<String> playlist) {
-        this.songNameArray = playlist.toArray(new String[0]);
+        if ( playlist != null ) {
+            this.songNameArray = playlist.toArray(new String[0]);
+        }
+    }
+
+    public void addSong(String song){ // CUSTOM METHOD : ADDS SONGS TO THE ARRAY THAT HOLDS ALL OF THE SONGS
+        if ( song != null ) {
+            String[] newArray = Arrays.copyOf(songNameArray, songNameArray.length + 1);
+            newArray[newArray.length - 1] = song;
+            this.songNameArray = newArray;
+        } else {
+            throw new IllegalArgumentException("Inputted song is null.");
+        }
+    }
+
+    public void removeSong(String song){ // CUSTOM METHOD : REMOVES SONGS TO THE ARRAY THAT HOLDS ALL OF THE SONGS
+
     }
 
     public String[] getSongNameArray() { // Returns the array full of song names
-        return songNameArray;
+        if ( this.songNameArray != null ){
+            return songNameArray;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     public String getCurrentSelection() { // Returns the song that you're currently on

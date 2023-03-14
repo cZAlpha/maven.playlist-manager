@@ -1,20 +1,19 @@
 package com.github.curriculeon;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class PlaylistManager {
     // Init. a list to hold the playlist stuff
-    private List<String> playlist;
+    private Playlist playlist;
 
     public PlaylistManager(String[] songs) {
-        this.playlist = Arrays.asList(songs); // Sets the list that holds the playlist equal to a list version of the array input
+        this.playlist = new Playlist(songs); // Sets the list that holds the playlist equal to a list version of the array input
     }
 
     public PlaylistManager(List<String> songs) {
-        this.playlist = songs; // Sets them equal because they're both lists
+        this.playlist = new Playlist(songs); // Sets them equal because they're both lists
     }
 
     public PlaylistManager() {
@@ -22,39 +21,29 @@ public class PlaylistManager {
     }
 
     public Playlist getPlaylist() {
-        return new Playlist(this.playlist);
+        return playlist; // returns the playlist
     }
 
     public void setPlaylist(Playlist playlist) {
-        if (playlist != null) {
-            this.playlist = Arrays.asList(playlist.getSongNameArray());
+        if ( playlist != null ) {
+            this.playlist = playlist;
         } else {
-            System.out.println("The playlist inputted is equal to null, please try again.");
-            throw new java.lang.IllegalArgumentException();
+            throw new IllegalArgumentException("Invalid nullary input.");
         }
     }
 
     private void setPlaylist(String[] toArray) {
-        if (playlist != null) {
-            this.playlist = Arrays.asList(toArray);
-        } else {
-            System.out.println("The playlist inputted is equal to null, please try again.");
-            throw new java.lang.IllegalArgumentException();
-        }
+        this.playlist = new Playlist(toArray);
     }
 
     public void addSong(String songToAdd) {
-        if ( this.playlist != null) {
-            List<String> arrayList = new ArrayList<>(this.playlist);
-            arrayList.add(songToAdd);
-            this.playlist = arrayList;
+        if ( this.playlist != null ){
+            playlist.addSong(songToAdd);
         }
     }
 
     public void removeSong(String songToRemove) {
-        if ( this.playlist != null) {
-            playlist.remove(songToRemove);
-        }
+
     }
 
     public void printAll() {
